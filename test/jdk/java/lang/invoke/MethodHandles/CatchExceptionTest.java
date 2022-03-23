@@ -119,6 +119,10 @@ public class CatchExceptionTest {
         for (CatchExceptionTest test : TestFactory.MANDATORY_TEST_CASES) {
             test.runTest();
         }
+try {
+Thread.sleep(1000 * 60);
+} catch (InterruptedException e) {
+}
         runner.call();
     }
 
