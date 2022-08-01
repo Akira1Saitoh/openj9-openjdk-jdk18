@@ -419,7 +419,7 @@ public class VectorReshapeTests {
         Assert.assertEquals(output, expected);
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeByte(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -465,7 +465,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeShort(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -511,7 +511,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeInt(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -557,7 +557,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeLong(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -603,7 +603,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeFloat(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -649,7 +649,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testReshapeDouble(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(64/Byte.SIZE);
         byte[] bin128 = fa.apply(128/Byte.SIZE);
@@ -838,7 +838,7 @@ public class VectorReshapeTests {
         return result;
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testRebracket64(IntFunction<byte[]> fa) {
         byte[] barr = fa.apply(64/Byte.SIZE);
         byte[] bout = new byte[barr.length];
@@ -936,7 +936,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testRebracket256(IntFunction<byte[]> fa) {
         byte[] barr = fa.apply(256/Byte.SIZE);
         byte[] bout = new byte[barr.length];
@@ -985,7 +985,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testRebracket512(IntFunction<byte[]> fa) {
         byte[] barr = fa.apply(512/Byte.SIZE);
         byte[] bout = new byte[barr.length];
@@ -1034,7 +1034,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testRebracketMax(IntFunction<byte[]> fa) {
         byte[] barr = fa.apply(S_Max_BIT.vectorBitSize()/Byte.SIZE);
         byte[] bout = new byte[barr.length];
@@ -3442,7 +3442,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "byteUnaryOpProvider")
+    //@Test(dataProvider = "byteUnaryOpProvider")
     static void testUCastFromByte(IntFunction<byte[]> fa) {
         byte[] bin64 = fa.apply(bspec64.length());
         byte[] bin128 = fa.apply(bspec128.length());
@@ -3544,7 +3544,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "shortUnaryOpProvider")
+    //@Test(dataProvider = "shortUnaryOpProvider")
     static void testUCastFromShort(IntFunction<short[]> fa) {
         short[] sin64 = fa.apply(sspec64.length());
         short[] sin128 = fa.apply(sspec128.length());
@@ -3616,7 +3616,7 @@ public class VectorReshapeTests {
         }
     }
 
-    @Test(dataProvider = "intUnaryOpProvider")
+    //@Test(dataProvider = "intUnaryOpProvider")
     static void testUCastFromInt(IntFunction<int[]> fa) {
         int[] iin64 = fa.apply(ispec64.length());
         int[] iin128 = fa.apply(ispec128.length());
