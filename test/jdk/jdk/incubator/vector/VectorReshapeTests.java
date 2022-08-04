@@ -705,6 +705,19 @@ public class VectorReshapeTests {
     void testVectorRebracketLanewise(VectorSpecies<E> a, VectorSpecies<F> b, byte[] input, byte[] output) {
         testVectorRebracket(a, b, input, output, true);
     }
+
+    static <E,F>
+    void dumpSliceRebracket(Vector<E> av, int part, int length) {
+		Vector<E> a1 = av.slice(part);
+		byte[] temp = new byte[length];
+                a1.intoByteArray(temp, 0, ByteOrder.nativeOrder());
+        	System.out.println("slice(" + part + "):  "+Arrays.toString(temp));
+		Vector<E> a2 = av.slice(part - 1);
+                a2.intoByteArray(temp, 0, ByteOrder.nativeOrder());
+        	System.out.println("slice(" + (part - 1) + "):  "+Arrays.toString(temp));
+       
+    }
+
     @ForceInline
     static <E,F>
     void testVectorRebracket(VectorSpecies<E> a, VectorSpecies<F> b, byte[] input, byte[] output, boolean lanewise) {
@@ -743,6 +756,10 @@ public class VectorReshapeTests {
                 if (lanewise) {
                     expected = castByteArrayData(expected, atype, btype);
                 }
+		// debug
+        	if (!Arrays.equals(expected, output)) {
+    			dumpSliceRebracket(av, part, input.length);
+		}
                 checkPartialResult(a, b, input, output, expected,
                                    lanewise, part, origin);
             }
