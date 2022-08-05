@@ -2050,6 +2050,9 @@ public abstract class ByteVector extends AbstractVector<Byte> {
     ByteVector
     blendTemplate(Class<M> maskType, ByteVector v, M m) {
         v.check(this);
+	if (!m.anyTrue()) {
+		System.err.println("blend: all false!");
+	}
         return VectorSupport.blend(
             getClass(), maskType, byte.class, length(),
             this, v, m,
