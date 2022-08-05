@@ -570,6 +570,9 @@ public class VectorSupport {
             V v1, V v2, M m,
             VectorBlendOp<V, M> defaultImpl) {
         assert isNonCapturingLambda(defaultImpl) : defaultImpl;
+	if (!m.anyTrue()) {
+           System.err.println("blend: mask all false!");
+        }
         return defaultImpl.apply(v1, v2, m);
     }
 
