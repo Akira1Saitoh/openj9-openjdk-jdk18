@@ -560,6 +560,21 @@ public class VectorSupport {
         V apply(V v1, V v2, M m);
     }
 
+    private static
+    <M extends VectorMask<E>, E>
+    void checkBlend(M m, Class<E> eClass) {
+	Object payload = m.getPayload();
+	if (payload instanceof boolean[]) {
+		boolean[] mask = (boolean[])  payload;
+		for (int i = 0; i < mask.length; i++) {
+			if (mask[i]) {
+				return;
+			}
+		}
+		System.err.println("blend: mask all false!");
+	}
+    }
+
     @IntrinsicCandidate
     public static
     <V extends Vector<E>,
@@ -570,6 +585,7 @@ public class VectorSupport {
             V v1, V v2, M m,
             VectorBlendOp<V, M> defaultImpl) {
         assert isNonCapturingLambda(defaultImpl) : defaultImpl;
+	checkBlend(m, eClass);
         return defaultImpl.apply(v1, v2, m);
     }
 

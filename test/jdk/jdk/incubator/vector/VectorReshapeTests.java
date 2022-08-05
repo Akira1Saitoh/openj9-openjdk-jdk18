@@ -707,7 +707,7 @@ public class VectorReshapeTests {
     }
 
     static <E,F>
-    void dumpSliceRebracket(Vector<E> av, int part, int length) {
+    void dumpSliceRebracket(Vector<E> av, VectorSpecies<E> sp, int part, int length) {
 		Vector<E> a1 = av.slice(part);
 		byte[] temp = new byte[length];
                 a1.intoByteArray(temp, 0, ByteOrder.nativeOrder());
@@ -715,6 +715,15 @@ public class VectorReshapeTests {
 		Vector<E> a2 = av.slice(part - 1);
                 a2.intoByteArray(temp, 0, ByteOrder.nativeOrder());
         	System.out.println("slice(" + (part - 1) + "):  "+Arrays.toString(temp));
+		boolean[] mask = new boolean[length];
+		for (int i = 0; i < length; i++) {
+			mask[i] = (i % 2) == 0;
+		}
+		VectorMask<E> m = VectorMask.fromArray(sp, mask, 0);
+		Vector<E> a3 = av.blend(a2, m);
+                a3.intoByteArray(temp, 0, ByteOrder.nativeOrder());
+        	System.out.println("blend():  "+Arrays.toString(temp));
+			
        
     }
 
@@ -758,7 +767,7 @@ public class VectorReshapeTests {
                 }
 		// debug
         	if (!Arrays.equals(expected, output)) {
-    			dumpSliceRebracket(av, part, input.length);
+    			dumpSliceRebracket(av, a, part, input.length);
 		}
                 checkPartialResult(a, b, input, output, expected,
                                    lanewise, part, origin);
